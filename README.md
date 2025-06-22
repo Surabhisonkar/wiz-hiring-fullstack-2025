@@ -1,179 +1,168 @@
-# BookMySlot – Fullstack Hiring Challenge for New Grads
+# wiz-hiring-fullstack-2025
 
-Welcome to the WizCommerce Fullstack Hiring Challenge! This challenge is designed to assess your frontend and backend skills in building a simple, real-world application. Good luck, and have fun!
+A simple, full-stack event scheduling application built with React (frontend), FastAPI (backend), and PostgreSQL database. This project is designed for quick local setup and includes sample data and UI screenshots.
 
-> 🧠 **Note:** This challenge is ideal for SD1 candidates applying for either frontend or backend roles — but the best candidates will attempt both parts. We'll evaluate you on your strengths, but fullstack attempts are highly appreciated.
-
----
-
-## 🔄 Project Overview
-
-Build a simple scheduling application where users can create events and let others book available time slots. Think of it as a mini-Calendly.
+![React](https://img.shields.io/badge/frontend-React-blue?logo=react)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI-green?logo=fastapi)
+![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue?logo=postgresql)
+![Python](https://img.shields.io/badge/language-Python-blue?logo=python)
+![MIT License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ---
 
-## 🚀 Core Features
+## Table of Contents
 
-### ✏️ 1. Create Event (Private User)
-
-* Input: Event title, description
-* List of available time slots (ISO 8601 format: `2025-06-20T10:00`)
-* Max bookings per slot
-
-### 📋 2. Public Event Listing
-
-* List of all created events with titles and basic info
-* Click to see event details + available time slots
-
-### ⏰ 3. Booking Interface
-
-* Visitors can enter name + email to book a slot
-* Slot becomes unavailable after booking
-* Prevent double booking for same user + slot
-
-### 🌍 4. Time Zone Support
-
-* Users should be able to view and book slots in **their local time zone**
-* Time slots should auto-convert to user's browser or selected time zone
-* Store data in UTC and convert client-side using libraries like `date-fns-tz` or `luxon`
-
-### 📅 5. View My Bookings (optional)
-
-* User can see all their past bookings (filter by email)
+- [Project Overview](#project-overview)
+- [UI Screenshots](#ui-screenshots)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Folder Structure](#folder-structure)
+- [Local Setup & Installation](#local-setup--installation)
+- [Running the App Locally](#running-the-app-locally)
+- [Usage Guide](#usage-guide)
+- [Notes for Reviewers](#notes-for-reviewers)
+- [Contact](#contact)
 
 ---
 
-## 🖥 Suggested Frontend Screens
+## Project Overview
 
-### 1. **Home Page (Event Listing)**
+This project is an event scheduling platform built for the WizCommerce Fullstack Hiring Challenge. It demonstrates a modern, modular codebase with clear separation between frontend, backend, and database layers. The app allows users to view available time slots, create events, and book meetings, with all bookings associated with an email address and data persisted in PostgreSQL, making it simple to manage and keep track of scheduled meetings. 
 
-* Displays all upcoming public events
-* Basic event metadata: name, creator, number of slots
+---
+## UI Screenshots
 
-### 2. **Event Details Page**
+| Homepage                         | Booking Modal                    | Confirmation Screen             | Create Event Page                | Bookings by Email                | FastAPI API Docs                   |
+|-----------------------------------|----------------------------------|---------------------------------|----------------------------------|-----------------------------------|-------------------------------------|
+| ![Home](Screenshots/API/events/HomePage.png) | ![Book](Screenshots/API/events_{event_id}/EventBookingPage.png)    | ![Confirm](Screenshots/API/events_{event_id}_bookings/SuccessfullyBooking.png) | ![Create](Screenshots/API/create-event/create-event_1.png) | ![Bookings](Screenshots/API/events_{event_id}_bookings/BookingEventsUI.png) | ![Docs](Screenshots/FastAPI_docs/FastAPI_docs-1.png) |
 
-* Shows:
-
-  * Event name and description
-  * Available slots in user’s local time
-  * Booking form with name + email input
-
-### 3. **Create Event Page**
-
-* Form to input event name, description, and slots (date + time)
-* Time zone awareness on the input
-
-### 4. **My Bookings Page (Optional)**
-
-* Displays list of bookings by current user (using email as identifier)
-
-### 5. **Success/Feedback Screens**
-
-* Post-booking confirmation
-* Error/failure states (e.g. already booked, slot full)
+*Screenshots illustrate event discovery, booking modal, meeting confirmation, event creation, viewing bookings for a given email, and the automatically generated FastAPI interactive API documentation (`/docs`).*
 
 ---
 
-## 📊 API Specification (Suggested)
+## Features
 
-| Method | Endpoint                 | Description              |
-| ------ | ------------------------ | ------------------------ |
-| POST   | `/events`                | Create an event          |
-| GET    | `/events`                | List all events          |
-| GET    | `/events/:id`            | Get event + slots        |
-| POST   | `/events/:id/bookings`   | Book a slot              |
-| GET    | `/users/:email/bookings` | View bookings (optional) |
-
----
-
-## 📚 Tech Stack (Suggestions)
-
-* **Frontend**: React (Vite) + TailwindCSS
-* **Backend**: FastAPI / Flask / Express.js
-* **Database**: SQLite or PostgreSQL
-* **Deployment**: Vercel (frontend) + Render / Railway (backend)
+- View available time slots for meetings
+- Book a meeting in a selected slot
+- Create new events through a simple form
+- View all bookings and events under the same email address
+- Responsive and intuitive UI
+- FastAPI backend serving RESTful APIs
+- Data persistence with PostgreSQL
+- Easy-to-follow local setup
+- Double booking a slot is handled
+- UI screenshots included for reference
 
 ---
 
-## 🚗 Deployment Instructions
+## Tech Stack
 
-### 🌐 Example Hosting Platforms
-
-Here are some services you can use to deploy your frontend and backend:
-
-#### Frontend (Static Hosting)
-
-* [Vercel](https://vercel.com/) – Fast CI/CD with GitHub integration
-* [Netlify](https://www.netlify.com/) – Great for React/Vite apps
-* [Cloudflare Pages](https://pages.cloudflare.com/) – Free and fast
-* [GitHub Pages](https://pages.github.com/) – Works for static SPAs
-
-#### Backend (API + Database Hosting)
-
-* [Render](https://render.com/) – Easy FastAPI or Node.js hosting
-* [Railway](https://railway.app/) – Great for fullstack apps with PostgreSQL
-* [Fly.io](https://fly.io/) – Edge deployment with Docker support
-* [Replit](https://replit.com/) – Quick backend demos
-* [Supabase](https://supabase.com/) – For database + lightweight backend APIs
-
-### 📤 Submission Form
-
-To officially submit your solution, please fill out this short [Google Form](https://forms.gle/bY9UeufzBpUhiyU5A) with the following details:
-
-* Your Full Name
-* Email Address
-* GitHub repository link (private repo with access granted)
-* Frontend deployment URL (e.g., Vercel)
-* Backend deployment URL (e.g., Render)
-* Any notes or context you want us to know
-
-This helps us track all submissions in one place and ensures nothing gets missed.
-
-1. Fork this repo
-2. Build the frontend and backend
-3. Deploy (if possible) and include URLs in your README
-4. Submit GitHub link with live demo or local instructions
+- **Frontend:** React, CSS
+- **Backend:** FastAPI (Python)
+- **Database:** PostgreSQL
+- **ORM:** SQLAlchemy
+- **Other:** Node.js, npm (for frontend dependencies)
 
 ---
 
-## ✨ Bonus Features (Optional)
+## Folder Structure
 
-* Email confirmation on booking
-* Realtime booking updates
-* Event branding with image upload
-* Google Calendar sync (mocked is fine)
-
----
-
-## 🔍 Evaluation Rubric
-
-| Area             | What We're Looking For                        |
-| ---------------- | --------------------------------------------- |
-| ✅ Functionality  | All core features implemented, no major bugs  |
-| 📚 Code Quality  | Clear structure, modular design, comments     |
-| 🎨 UI/UX         | Responsive design, form feedback, good layout |
-| ⚙️ API Design    | RESTful, validation, edge-case handling       |
-| 🚁 Deployment    | Working links, good README, .env support      |
-| 📣 Communication | Commit hygiene, comments, README clarity      |
+```
+wiz-hiring-fullstack-2025/
+├── backend/             # FastAPI backend
+│   ├── app/             # Main application code
+│   └── requirements.txt # Python dependencies
+├── frontend/            # React frontend
+│   ├── public/
+│   └── src/
+├── Screenshots/         # UI screenshots for README
+├── README.md
+└── ...
+```
 
 ---
 
-## 📄 Submission Checklist
+## Local Setup & Installation
 
-* [x] Working backend with all relevant routes and validations
-* [x] Functional frontend with event listing, detail view, and booking
-* [x] Clear GitHub repository with meaningful commit history
-* [x] Frontend deployment URL (e.g., Vercel, Netlify)
-* [x] Backend deployment URL (e.g., Render, Railway)
-* [x] Local setup instructions (with `.env.example`)
-* [x] Well-written README explaining tech choices, folder structure, and approach
-* [x] Bonus features (if implemented) clearly listed in README
-* [x] Short write-up on assumptions made and areas for improvement
+### Prerequisites
 
-> 🔒 **Plagiarism Notice:** We manually review all submissions. Identical or copy-pasted codebases will be **disqualified**. Please do original work — this helps you grow and us evaluate fairly.
+- [Node.js](https://nodejs.org/) and npm
+- [Python 3.8+](https://www.python.org/)
+- [PostgreSQL](https://www.postgresql.org/) database
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Surabhisonkar/wiz-hiring-fullstack-2025.git
+cd wiz-hiring-fullstack-2025
+```
+
+### 2. Setup PostgreSQL
+
+- Install and start PostgreSQL locally.
+- Remember your DB username, password, and port.
+
+### 3. Backend Setup
+
+```bash
+cd backend
+pip install -r requirements.txt
+# Configure your database connection:
+# Create a .env file or edit config as needed:
+# DATABASE_URL=postgresql://<username>:<password>@localhost:5432/wizcalendly
+# Run you backend
+uvicorn app.main:app --reload
+```
+- The backend will be available at `http://localhost:8000`
+
+### 4. Frontend Setup
+
+Open a new terminal and run:
+
+```bash
+cd frontend
+npm install
+npm start
+```
+- The frontend will be available at `http://localhost:3000`
+
+### 5. Load Sample Data (Optional)
+
+- If provided, follow instructions in `backend/sample_data/README.md` to populate the database.
 
 ---
 
-## 👊 Good Luck!
+## Running the App Locally
 
-We’re excited to see your submission. Think creatively, structure your code well, and showcase your ability to work across the stack. Happy coding!
+1. Ensure PostgreSQL is running and the database is set up.
+2. Start the backend server (`uvicorn app.main:app --reload`).
+3. Start the frontend (`npm start` from `frontend` directory).
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Usage Guide
+
+-Select an event from the homepage
+- Browse available time slots of the selected event.
+- Click “Book” on any slot to open the booking modal.
+- Confirm your booking; the confirmation screen will show your scheduled event.
+- See a list of your bookings by entering the email id.
+- All interactions are handled in the UI—no authentication required for this demo.
+
+---
+
+## Notes for Reviewers
+
+- This app is not deployed online; please run it locally using the instructions above.
+- UI screenshots are provided for quick reference.
+- The codebase is modular and follows best practices for separation.
+- If you would like a deployed version or have any questions, I am happy to assist further.
+
+---
+
+## Contact
+
+**Surabhi Sonkar**  
+[GitHub](https://github.com/Surabhisonkar)
+[LinkedIn](https://www.linkedin.com/in/surabhi-sonkar-b068111b6/)
