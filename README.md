@@ -6,7 +6,6 @@ A simple, full-stack event scheduling application built with React (frontend), F
 ![FastAPI](https://img.shields.io/badge/backend-FastAPI-green?logo=fastapi)
 ![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue?logo=postgresql)
 ![Python](https://img.shields.io/badge/language-Python-blue?logo=python)
-![MIT License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ---
 
